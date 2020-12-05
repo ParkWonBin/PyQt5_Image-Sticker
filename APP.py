@@ -1,27 +1,29 @@
 
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap,QPainter
 from PyQt5.QtCore import Qt, QPoint
+
 
 class MyApp(QWidget):
 
     def __init__(self):
         super().__init__()
         self.initUI()
+        self.is_clicked_left =True
 
     def initUI(self):
         # 타이틀 영역 제거 
         self.setWindowFlag(Qt.FramelessWindowHint) 
         
         # 이미지 선택
-        pixmap = QPixmap("image.jpg")
-        lbl_img = QLabel()
-        lbl_img.setPixmap(pixmap)
+        self.pixmap = QPixmap("image.jpg")
+        self.lbl_img = QLabel()
+        self.lbl_img.setPixmap(self.pixmap)
 
         # 이미지 얹기
         vbox = QVBoxLayout()
-        vbox.addWidget(lbl_img)
+        vbox.addWidget(self.lbl_img)
         vbox.setContentsMargins(0,0,0,0)
         self.setLayout(vbox)
 
@@ -36,16 +38,25 @@ class MyApp(QWidget):
 
     def mouseMoveEvent(self, event):
         delta = QPoint(event.globalPos() - self.oldPos) # 마우스 움직인 정도
-        self.move(self.x() + delta.x(), self.y() + delta.y())
+        
+        if self.is_clicked_left :
+            # 위치 조절
+            self.move(self.x() + delta.x(), self.y() + delta.y())
+        else :
+            # 크기 조절
+            w = self.width() +delta.x()
+            h = self.height()+delta.y()
+            self.pixmap = self.pixmap.scaled(w,h, Qt.IgnoreAspectRatio, Qt.FastTransformation)
+            self.lbl_img.setPixmap(self.pixmap)
+            self.resize(w,h)
+
         self.oldPos = event.globalPos()
 
     def mouseButtonKind(self,buttons):
-        if buttons & Qt.LeftButton: 
-            print('LeftButton')
-        if buttons & Qt.RightButton: 
-            print('RightButton')
-        if buttons & Qt.MidButton: 
-            print('MidButton')
+        if buttons & Qt.LeftButton: self.is_clicked_left =True
+        if buttons & Qt.RightButton:self.is_clicked_left =False
+        if buttons & Qt.MidButton:  sys.exit(app.exec_())
+
 
 if __name__ == '__main__':
    app = QApplication(sys.argv)
