@@ -1,10 +1,8 @@
 
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
-from PyQt5.QtGui import QMouseEvent
-from PyQt5.QtGui import QDragEnterEvent
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QPoint
 
 class MyApp(QWidget):
 
@@ -31,11 +29,29 @@ class MyApp(QWidget):
         self.move(300, 300)
         self.show()
 
-def dragEnterEvent(self, e: QDragEnterEvent):
-    e.accept()
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+        self.mouseButtonKind(event.buttons())
+        # print(event)
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint(event.globalPos() - self.oldPos) # 마우스 움직인 정도
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
+
+    def mouseButtonKind(self,buttons):
+        if buttons & Qt.LeftButton: 
+            print('LeftButton')
+        if buttons & Qt.RightButton: 
+            print('RightButton')
+        if buttons & Qt.MidButton: 
+            print('MidButton')
 
 if __name__ == '__main__':
    app = QApplication(sys.argv)
    ex = MyApp()
    sys.exit(app.exec_())
 
+
+# 마우스 버튼 이벤트 관련
+# https://freeprog.tistory.com/330
