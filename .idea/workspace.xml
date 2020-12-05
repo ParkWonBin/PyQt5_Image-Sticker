@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d177aff7-d1fb-4611-8337-674ca189543b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/sample0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sample4.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image-Sticker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Image-Sticker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image-Sticker.pyw" beforeDir="false" afterPath="$PROJECT_DIR$/Image-Sticker.pyw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reference_gif_anim/s2.gif" beforeDir="false" afterPath="$PROJECT_DIR$/sample3.gif" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lEzXzyRBYAsP423cEp9AxMBsVT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/reference_events" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\pwb1128\Image-Sticker\reference_events" />
+      <recent name="C:\Users\pwb1128\Image-Sticker" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pwb1128\Image-Sticker" />
+      <recent name="C:\Users\pwb1128\Image-Sticker\gif_sticker" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.Image-Sticker.pyw">
+    <configuration name="Image-Sticker" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Image-Sticker" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\pwb1128\Anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Image-Sticker.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Image-Sticker.pyw" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Image-Sticker" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\pwb1128\Anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Image-Sticker.pyw" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="gif_viewer_pyglet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Image-Sticker" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\pwb1128\Anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/gif_sticker" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\pwb1128\Image-Sticker\gif_sticker\gif_viewer_pyglet.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="gif_viewer_pyqt5" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Image-Sticker" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\pwb1128\Anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/reference_gif_animation" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/reference_gif_animation/gif_viewer_pyqt5.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test.pt" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Image-Sticker" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\pwb1128\Anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.pt.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Image-Sticker.pyw" />
+        <item itemvalue="Python.Image-Sticker" />
+        <item itemvalue="Python.test.pt" />
+        <item itemvalue="Python.gif_viewer_pyqt5" />
+        <item itemvalue="Python.gif_viewer_pyglet" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d177aff7-d1fb-4611-8337-674ca189543b" name="Default Changelist" comment="" />
+      <created>1607177081733</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607177081733</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="620" y="111" key="#Image-Sticker" timestamp="1607177440981">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="582" y="125" key="#Image-Sticker.pyw" timestamp="1607191426282">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="582" y="125" key="#Image-Sticker.pyw/0.0.2560.1040/2560.0.1536.864@0.0.2560.1040" timestamp="1607191426282" />
+    <state x="620" y="111" key="#Image-Sticker/0.0.2560.1040/2560.0.1536.864@0.0.2560.1040" timestamp="1607177440981" />
+    <state x="528" y="126" key="#gif_viewer" timestamp="1607178182026">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="528" y="126" key="#gif_viewer/0.0.2560.1040/2560.0.1536.864@0.0.2560.1040" timestamp="1607178182026" />
+    <state x="528" y="126" key="#gif_viewer_pyqt5" timestamp="1607179005303">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="528" y="126" key="#gif_viewer_pyqt5/0.0.2560.1040/2560.0.1536.864@0.0.2560.1040" timestamp="1607179005303" />
+    <state x="528" y="126" key="#test.pt" timestamp="1607181330012">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="528" y="126" key="#test.pt/0.0.2560.1040/2560.0.1536.864@0.0.2560.1040" timestamp="1607181330012" />
+    <state width="722" height="266" key="GridCell.Tab.0.bottom" timestamp="1607194106370">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="722" height="266" key="GridCell.Tab.0.bottom/0.0.2560.1040/2560.0.1536.864@0.0.2560.1040" timestamp="1607194106370" />
+    <state width="722" height="266" key="GridCell.Tab.0.center" timestamp="1607194106370">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="722" height="266" key="GridCell.Tab.0.center/0.0.2560.1040/2560.0.1536.864@0.0.2560.1040" timestamp="1607194106370" />
+    <state width="722" height="266" key="GridCell.Tab.0.left" timestamp="1607194106370">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="722" height="266" key="GridCell.Tab.0.left/0.0.2560.1040/2560.0.1536.864@0.0.2560.1040" timestamp="1607194106370" />
+    <state width="722" height="266" key="GridCell.Tab.0.right" timestamp="1607194106370">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="722" height="266" key="GridCell.Tab.0.right/0.0.2560.1040/2560.0.1536.864@0.0.2560.1040" timestamp="1607194106370" />
+    <state width="722" height="328" key="GridCell.Tab.1.bottom" timestamp="1607193730726">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="722" height="328" key="GridCell.Tab.1.bottom/0.0.2560.1040/2560.0.1536.864@0.0.2560.1040" timestamp="1607193730726" />
+    <state width="722" height="328" key="GridCell.Tab.1.center" timestamp="1607193730726">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="722" height="328" key="GridCell.Tab.1.center/0.0.2560.1040/2560.0.1536.864@0.0.2560.1040" timestamp="1607193730726" />
+    <state width="722" height="328" key="GridCell.Tab.1.left" timestamp="1607193730726">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="722" height="328" key="GridCell.Tab.1.left/0.0.2560.1040/2560.0.1536.864@0.0.2560.1040" timestamp="1607193730726" />
+    <state width="722" height="328" key="GridCell.Tab.1.right" timestamp="1607193730726">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state width="722" height="328" key="GridCell.Tab.1.right/0.0.2560.1040/2560.0.1536.864@0.0.2560.1040" timestamp="1607193730726" />
+    <state x="385" y="264" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1607190409034">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="385" y="264" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.2560.1040/2560.0.1536.864@0.0.2560.1040" timestamp="1607190409034" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
