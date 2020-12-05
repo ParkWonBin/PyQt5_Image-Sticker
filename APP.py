@@ -1,3 +1,4 @@
+import sys
 from PyQt5.QtGui import QImage,QPainter
 from PyQt5.QtCore import Qt, QPoint
 from PyQt5.QtWidgets import QWidget,QMainWindow,QVBoxLayout,QApplication
@@ -15,13 +16,12 @@ class Canvas(QWidget):
             qp.drawImage(0, 0, image)
             
 class Window(QMainWindow):
-    def __init__(self):
+    def __init__(self) :
         super().__init__()
         self.canvas = Canvas()
-
-       # 타이틀 영역 제거 
         self.setWindowTitle("image-sticker")
-        self.setWindowFlag(Qt.FramelessWindowHint) 
+        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setAcceptDrops(True)
 
         # 이미지 배치
         layout = QVBoxLayout()
@@ -31,7 +31,8 @@ class Window(QMainWindow):
         content = QWidget()
         content.setLayout(layout)
         self.setCentralWidget(content)
-        self.canvas.image =  QImage("image.jpg")
+        self.canvas.image = QImage("image.jpg")
+
     
     # 마우스 이벤트 관련
     def mousePressEvent(self, event):
@@ -58,8 +59,17 @@ class Window(QMainWindow):
         if buttons & Qt.MidButton:  
             sys.exit(app.exec_())
 
+    def dragEnterEvent(self, event):
+        if event.mimeData().hasText():
+            event.acceptProposedAction()
+
+    def dropEvent(self, event):
+        img_url = event.mimeData().text().lstrip("file:///")
+        self.canvas.image = QImage(img_url)
+        self.canvas.update()
+        # print(img_url)
+
 if __name__ == "__main__":
-    import sys
     app = QApplication(sys.argv)
     window = Window()
     window.show()
