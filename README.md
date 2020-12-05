@@ -10,9 +10,11 @@
 - 기본사진 : 같은 파일위치 내 image.jpg
 
 # 설명 
+Image-Sticker (이하 App)
 - App.py : 메모장 등으로 script 확인
 - App.pyw: python으로 프로그램 실행(pyw : 콘솔창 숨기고 실행)
-- App.exe: 실행파일
+- App.exe: 실행파일 (최상단 윈도우. 여러게 띄우면 메모리 누수 나는 것 같음)
+- App_light.exe: 실행파일 (일반 윈도우, 원하는 만큼 많이 띄울 수 있음)
 
 # exe로 저장 
 - cmd로 App.py까지 이동
