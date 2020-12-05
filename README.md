@@ -6,6 +6,6 @@
 - 기본사진 : 같은 파일위치 내 image.jpg
 
 # 설명 
-- App.py : vscode, 메모장 등으로 script 확인
-- App.pyw: python이 깔려있다면, 프로그램 실행됨(pyw : 콘솔창 숨김)
-- App.exe: 실행.
+- App.py : 메모장 등으로 script 확인
+- App.pyw: python으로 프로그램 실행(pyw : 콘솔창 숨기고 실행)
+- App.exe: 실행파일
