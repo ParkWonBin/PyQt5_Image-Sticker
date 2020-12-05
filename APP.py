@@ -1,68 +1,66 @@
-
-import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
-from PyQt5.QtGui import QPixmap,QPainter
+from PyQt5.QtGui import QImage,QPainter
 from PyQt5.QtCore import Qt, QPoint
+from PyQt5.QtWidgets import QWidget,QMainWindow,QVBoxLayout,QApplication
 
-
-class MyApp(QWidget):
-
+# 이미지 크기 조정 관련
+class Canvas(QWidget):
     def __init__(self):
         super().__init__()
-        self.initUI()
-        self.is_clicked_left =True
+        self.image = QImage()
 
-    def initUI(self):
-        # 타이틀 영역 제거 
+    def paintEvent(self, event):
+        qp = QPainter(self)
+        if not self.image.isNull():
+            image = self.image.scaled(self.size())
+            qp.drawImage(0, 0, image)
+            
+class Window(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.canvas = Canvas()
+
+       # 타이틀 영역 제거 
+        self.setWindowTitle("image-sticker")
         self.setWindowFlag(Qt.FramelessWindowHint) 
-        
-        # 이미지 선택
-        self.pixmap = QPixmap("image.jpg")
-        self.lbl_img = QLabel()
-        self.lbl_img.setPixmap(self.pixmap)
 
-        # 이미지 얹기
-        vbox = QVBoxLayout()
-        vbox.addWidget(self.lbl_img)
-        vbox.setContentsMargins(0,0,0,0)
-        self.setLayout(vbox)
+        # 이미지 배치
+        layout = QVBoxLayout()
+        layout.addWidget(self.canvas)
+        layout.setContentsMargins(0, 0, 0, 0)
 
-        # 위치 조정
-        self.move(300, 300)
-        self.show()
-
+        content = QWidget()
+        content.setLayout(layout)
+        self.setCentralWidget(content)
+        self.canvas.image =  QImage("image.jpg")
+    
+    # 마우스 이벤트 관련
     def mousePressEvent(self, event):
         self.oldPos = event.globalPos()
         self.mouseButtonKind(event.buttons())
-        # print(event)
 
+    # 좌/우/중 클릭 : 이동/크기/종료
     def mouseMoveEvent(self, event):
-        delta = QPoint(event.globalPos() - self.oldPos) # 마우스 움직인 정도
+        # 마우스 움직인 정도
+        delta = QPoint(event.globalPos() - self.oldPos)
         
-        if self.is_clicked_left :
-            # 위치 조절
+        if self.is_clicked_L : 
             self.move(self.x() + delta.x(), self.y() + delta.y())
-        else :
-            # 크기 조절
-            w = self.width() +delta.x()
-            h = self.height()+delta.y()
-            self.pixmap = self.pixmap.scaled(w,h, Qt.IgnoreAspectRatio, Qt.FastTransformation)
-            self.lbl_img.setPixmap(self.pixmap)
-            self.resize(w,h)
+        else : 
+            self.resize(self.width()+delta.x(),self.height()+delta.y())
 
         self.oldPos = event.globalPos()
 
     def mouseButtonKind(self,buttons):
-        if buttons & Qt.LeftButton: self.is_clicked_left =True
-        if buttons & Qt.RightButton:self.is_clicked_left =False
-        if buttons & Qt.MidButton:  sys.exit(app.exec_())
+        if buttons & Qt.LeftButton: 
+            self.is_clicked_L =True
+        if buttons & Qt.RightButton:
+            self.is_clicked_L =False
+        if buttons & Qt.MidButton:  
+            sys.exit(app.exec_())
 
-
-if __name__ == '__main__':
-   app = QApplication(sys.argv)
-   ex = MyApp()
-   sys.exit(app.exec_())
-
-
-# 마우스 버튼 이벤트 관련
-# https://freeprog.tistory.com/330
+if __name__ == "__main__":
+    import sys
+    app = QApplication(sys.argv)
+    window = Window()
+    window.show()
+    sys.exit(app.exec_())
