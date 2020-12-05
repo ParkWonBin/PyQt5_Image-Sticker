@@ -43,7 +43,7 @@ class Window(QMainWindow):
         self.canvas = Canvas()
         self.Desk = QLabel(desk, self.canvas)
         self.setWindowTitle("image-sticker")
-        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint) # 타이틀 없는 최상단 윈도우
         self.setAcceptDrops(True)
         self.setMinimumSize(25, 25)
 
