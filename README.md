@@ -18,5 +18,11 @@ Image-Sticker (이하 App)
 
 # exe로 저장 
 - cmd로 App.py까지 이동
-- pyinstaller -w -F Image-Sticker.py
+- pyinstaller -w -F -i=icon.ico Image-Sticker.py
+
+- F : 하나의 실행파일로 만들기
+- w : 콘솔 안뜨게 하기
+- n : 만들어지는 실행파일의 제목 정하는 옵션
+- i : icon 이미지 넣기
+
 - 참고 : https://wikidocs.net/21952
