@@ -1,6 +1,6 @@
 import sys
-from PyQt5.QtGui import QImage, QPainter, QMovie,QPalette, QPen,QIcon
-from PyQt5.QtCore import Qt, QPoint, QByteArray, QSize
+from PyQt5.QtGui import QImage, QPainter, QMovie, QPalette, QPen
+from PyQt5.QtCore import Qt, QPoint, QByteArray, QSize, QEvent
 from PyQt5.QtWidgets import QWidget, QMainWindow, QVBoxLayout, QApplication, QLabel, QGraphicsOpacityEffect
 
 desk = """
@@ -18,10 +18,9 @@ class Canvas(QWidget):
     def __init__(self):
         super().__init__()
         self.image = QImage()
-        self.play_gif('earth.gif')
+        self.movie = QMovie()
 
     def play_gif(self, gif_url):
-        # gif 영상 관련
         self.movie = QMovie(gif_url, QByteArray(), self)
         self.movie.setCacheMode(QMovie.CacheAll)
         self.movie.start()
@@ -35,33 +34,26 @@ class Canvas(QWidget):
 
 
 class Window(QMainWindow):
-    def paintEvent(self, event=None):
-        painter = QPainter(self)
-        painter.setOpacity(0) # 배경 투명하게
-        painter.setBrush(Qt.white)
-        painter.setPen(QPen(Qt.white))   
-        painter.drawRect(self.rect())
-
-
     def __init__(self):
         super().__init__()
 
         self.is_gif = False
         self.canvas = Canvas()
+        self.no_img = QImage()
 
         self.setAcceptDrops(True)
         self.setMinimumSize(25, 25)
         self.setWindowTitle("image-sticker")
-        self.setWindowFlags(Qt.FramelessWindowHint)# | Qt.WindowStaysOnTopHint) #주석풀면 최상단 고정
-        
-        # 배경 투명 및 초기 설명창 
-        self.setAttribute(Qt.WA_TranslucentBackground, True)# 창 투명하게 하기
+        self.setWindowFlags(Qt.FramelessWindowHint)  # | Qt.WindowStaysOnTopHint) #주석풀면 최상단 고정
+
+        # 배경 투명 및 초기 설명창
+        self.setAttribute(Qt.WA_TranslucentBackground, True)  # 창 투명하게 하기
         self.Desk = QLabel(desk, self.canvas)
-        self.Desk.setStyleSheet("color: black;" 
-                              "background-color: #FFFFFF;"
-                              "border-style: solid;"
-                              "border-width: 4px;"
-                              "border-color: #AAAAAA")
+        self.Desk.setStyleSheet("color: black;"
+                                "background-color: #FFFFFF;"
+                                "border-style: solid;"
+                                "border-width: 4px;"
+                                "border-color: #AAAAAA")
 
         # 레이아웃 및 캔버스 배치
         layout = QVBoxLayout()
@@ -78,9 +70,23 @@ class Window(QMainWindow):
         self.movie_screen.hide()  # 기본값: hide
         #######################
 
+    def WindowStateChange(self, event):
+        if self.isMinimized(): self.showNormal()
+        # self.activateWindow()
+        # https://stackoverflow.com/questions/12280815/pyqt-window-focus
+        # https://stackoverrun.com/ko/q/2302286
+
+    def paintEvent(self, event=None):
+        painter = QPainter(self)
+        painter.setOpacity(0)  # 배경 투명하게
+        painter.setBrush(Qt.white)
+        painter.setPen(QPen(Qt.white))
+        painter.drawRect(self.rect())
+
     def update_img(self, img_url):
         img = QImage(img_url)
         if not img.isNull():
+            del (self.canvas.image)
             self.canvas.image = img
             size = self.canvas.image.size()
             self.resize_window(size.width(), size.height())
@@ -112,12 +118,12 @@ class Window(QMainWindow):
 
     def mouseButtonKind(self, buttons):
         if buttons & Qt.LeftButton: self.is_clicked_L = True
-        if buttons & Qt.RightButton:self.is_clicked_L = False
+        if buttons & Qt.RightButton: self.is_clicked_L = False
         if buttons & Qt.MidButton:  sys.exit(app.exec_())
 
     def dragEnterEvent(self, event):
         # 드롭다운 받으면 dropEvent 호출하는 이벤트
-        if event.mimeData().hasText():event.acceptProposedAction()
+        if event.mimeData().hasText(): event.acceptProposedAction()
 
     def dropEvent(self, event):
         img_url = event.mimeData().text().lstrip("file:///")
@@ -125,9 +131,10 @@ class Window(QMainWindow):
 
         if img_url[-4:] == '.gif':
             self.is_gif = True
-            self.canvas.image = QImage() # 배경 그림 지우기
+            del (self.canvas.movie)
             self.movie_screen.show()
-            self.canvas.play_gif(img_url)# gif movie
+            self.canvas.image = self.no_img  # 배경 그림 지우기
+            self.canvas.play_gif(img_url)  # gif movie 생성
             self.movie_screen.setMovie(self.canvas.movie)
             size = self.geometry()
 

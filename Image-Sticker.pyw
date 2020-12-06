@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtGui import QImage, QPainter, QMovie,QPalette, QPen
-from PyQt5.QtCore import Qt, QPoint, QByteArray, QSize
+from PyQt5.QtCore import Qt, QPoint, QByteArray, QSize,QEvent
 from PyQt5.QtWidgets import QWidget, QMainWindow, QVBoxLayout, QApplication, QLabel, QGraphicsOpacityEffect
 
 desk = """
@@ -69,6 +69,12 @@ class Window(QMainWindow):
         self.movie_screen.move(0, 0)
         self.movie_screen.hide()  # 기본값: hide
         #######################
+
+    def WindowStateChange(self, event):
+        if self.isMinimized(): self.showNormal()
+            # self.activateWindow()
+        # https://stackoverflow.com/questions/12280815/pyqt-window-focus
+        # https://stackoverrun.com/ko/q/2302286
 
     def paintEvent(self, event=None):
         painter = QPainter(self)
