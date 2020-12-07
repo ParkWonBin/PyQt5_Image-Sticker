@@ -70,11 +70,13 @@ class Window(QMainWindow):
         self.movie_screen.hide()  # 기본값: hide
         #######################
 
-    def WindowStateChange(self, event):
-        if self.isMinimized(): self.showNormal()
-        # self.activateWindow()
-        # https://stackoverflow.com/questions/12280815/pyqt-window-focus
-        # https://stackoverrun.com/ko/q/2302286
+    # def hideEvent(self, event):
+    #     if self.isMinimized(): self.activateWindow()
+    # def WindowStateChange(self, event):
+    #     if self.isMinimized(): self.showNormal()
+    #     # self.activateWindow()
+    #     # 포커스 이벤트 : https://stackoverflow.com/questions/12280815/pyqt-window-focus
+    #     # 창변경 이벤트 : https://stackoverrun.com/ko/q/2302286
 
     def paintEvent(self, event=None):
         painter = QPainter(self)
