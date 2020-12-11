@@ -71,17 +71,18 @@ class Window(QMainWindow):
         #######################
 
     def WindowStateChange(self, event):
-        if self.isMinimized(): self.showNormal()
-            # self.activateWindow()
+        if self.isMinimized(): 
+            self.showNormal()
+            #  self.activateWindow()
         # https://stackoverflow.com/questions/12280815/pyqt-window-focus
         # https://stackoverrun.com/ko/q/2302286
 
-    def paintEvent(self, event=None):
-        painter = QPainter(self)
-        painter.setOpacity(0) # 배경 투명하게
-        painter.setBrush(Qt.white)
-        painter.setPen(QPen(Qt.white))   
-        painter.drawRect(self.rect())
+    # def paintEvent(self, event=None):
+    #     painter = QPainter(self)
+    #     painter.setOpacity(0) # 배경 투명하게
+    #     painter.setBrush(Qt.white)
+    #     painter.setPen(QPen(Qt.white))   
+    #     painter.drawRect(self.rect())
 
     def update_img(self, img_url):
         img = QImage(img_url)
@@ -95,10 +96,27 @@ class Window(QMainWindow):
             self.setGeometry(500, 270, 260, 120)
             self.Desk.show()
 
+    # key 이벤트 추후 추가 예정
+    # def keyPressEvent(self, e):
+    #     #https://wikidocs.net/23755
+    #     if e.key() == Qt.Key_Escape:
+    #         self.close()
+    #     elif e.key() == Qt.Key_F:
+    #         self.showFullScreen()
+    #     elif e.key() == Qt.Key_N:  
+    #          self.showNormal()
+    #     elif e.key() == Qt.Key_C:  
+    #         print('new window')
+    #         self.window = Window()
+    #         self.window.show()
+
     # 마우스 이벤트 관련
     def mousePressEvent(self, event):
         self.oldPos = event.globalPos()
-        self.mouseButtonKind(event.buttons())
+        buttons = event.buttons()
+        if buttons & Qt.LeftButton: self.is_clicked_L = True
+        if buttons & Qt.RightButton:self.is_clicked_L = False
+        if buttons & Qt.MidButton:  self.exec_()
 
     # 좌/우/중 클릭 : 이동/크기/종료
     def mouseMoveEvent(self, event):
@@ -115,11 +133,6 @@ class Window(QMainWindow):
             size = QSize(x, y)
             self.movie_screen.resize(size)
             self.movie_screen.movie().setScaledSize(size)
-
-    def mouseButtonKind(self, buttons):
-        if buttons & Qt.LeftButton: self.is_clicked_L = True
-        if buttons & Qt.RightButton:self.is_clicked_L = False
-        if buttons & Qt.MidButton:  sys.exit(app.exec_())
 
     def dragEnterEvent(self, event):
         # 드롭다운 받으면 dropEvent 호출하는 이벤트

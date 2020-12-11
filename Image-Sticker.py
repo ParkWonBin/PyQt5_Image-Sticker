@@ -1,6 +1,6 @@
 import sys
-from PyQt5.QtGui import QImage, QPainter, QMovie, QPalette, QPen
-from PyQt5.QtCore import Qt, QPoint, QByteArray, QSize, QEvent
+from PyQt5.QtGui import QImage, QPainter, QMovie,QPalette, QPen
+from PyQt5.QtCore import Qt, QPoint, QByteArray, QSize,QEvent
 from PyQt5.QtWidgets import QWidget, QMainWindow, QVBoxLayout, QApplication, QLabel, QGraphicsOpacityEffect
 
 desk = """
@@ -44,16 +44,16 @@ class Window(QMainWindow):
         self.setAcceptDrops(True)
         self.setMinimumSize(25, 25)
         self.setWindowTitle("image-sticker")
-        self.setWindowFlags(Qt.FramelessWindowHint)  # | Qt.WindowStaysOnTopHint) #주석풀면 최상단 고정
-
-        # 배경 투명 및 초기 설명창
-        self.setAttribute(Qt.WA_TranslucentBackground, True)  # 창 투명하게 하기
+        self.setWindowFlags(Qt.FramelessWindowHint)# | Qt.WindowStaysOnTopHint) #주석풀면 최상단 고정
+        
+        # 배경 투명 및 초기 설명창 
+        self.setAttribute(Qt.WA_TranslucentBackground, True)# 창 투명하게 하기
         self.Desk = QLabel(desk, self.canvas)
-        self.Desk.setStyleSheet("color: black;"
-                                "background-color: #FFFFFF;"
-                                "border-style: solid;"
-                                "border-width: 4px;"
-                                "border-color: #AAAAAA")
+        self.Desk.setStyleSheet("color: black;" 
+                              "background-color: #FFFFFF;"
+                              "border-style: solid;"
+                              "border-width: 4px;"
+                              "border-color: #AAAAAA")
 
         # 레이아웃 및 캔버스 배치
         layout = QVBoxLayout()
@@ -70,25 +70,24 @@ class Window(QMainWindow):
         self.movie_screen.hide()  # 기본값: hide
         #######################
 
-    # def hideEvent(self, event):
-    #     if self.isMinimized(): self.activateWindow()
-    # def WindowStateChange(self, event):
-    #     if self.isMinimized(): self.showNormal()
-    #     # self.activateWindow()
-    #     # 포커스 이벤트 : https://stackoverflow.com/questions/12280815/pyqt-window-focus
-    #     # 창변경 이벤트 : https://stackoverrun.com/ko/q/2302286
+    def WindowStateChange(self, event):
+        if self.isMinimized(): 
+            self.showNormal()
+            #  self.activateWindow()
+        # https://stackoverflow.com/questions/12280815/pyqt-window-focus
+        # https://stackoverrun.com/ko/q/2302286
 
-    def paintEvent(self, event=None):
-        painter = QPainter(self)
-        painter.setOpacity(0)  # 배경 투명하게
-        painter.setBrush(Qt.white)
-        painter.setPen(QPen(Qt.white))
-        painter.drawRect(self.rect())
+    # def paintEvent(self, event=None):
+    #     painter = QPainter(self)
+    #     painter.setOpacity(0) # 배경 투명하게
+    #     painter.setBrush(Qt.white)
+    #     painter.setPen(QPen(Qt.white))   
+    #     painter.drawRect(self.rect())
 
     def update_img(self, img_url):
         img = QImage(img_url)
         if not img.isNull():
-            del (self.canvas.image)
+            del(self.canvas.image)
             self.canvas.image = img
             size = self.canvas.image.size()
             self.resize_window(size.width(), size.height())
@@ -97,10 +96,27 @@ class Window(QMainWindow):
             self.setGeometry(500, 270, 260, 120)
             self.Desk.show()
 
+    # key 이벤트 추후 추가 예정
+    # def keyPressEvent(self, e):
+    #     #https://wikidocs.net/23755
+    #     if e.key() == Qt.Key_Escape:
+    #         self.close()
+    #     elif e.key() == Qt.Key_F:
+    #         self.showFullScreen()
+    #     elif e.key() == Qt.Key_N:  
+    #          self.showNormal()
+    #     elif e.key() == Qt.Key_C:  
+    #         print('new window')
+    #         self.window = Window()
+    #         self.window.show()
+
     # 마우스 이벤트 관련
     def mousePressEvent(self, event):
         self.oldPos = event.globalPos()
-        self.mouseButtonKind(event.buttons())
+        buttons = event.buttons()
+        if buttons & Qt.LeftButton: self.is_clicked_L = True
+        if buttons & Qt.RightButton:self.is_clicked_L = False
+        if buttons & Qt.MidButton:  self.exec_()
 
     # 좌/우/중 클릭 : 이동/크기/종료
     def mouseMoveEvent(self, event):
@@ -118,14 +134,9 @@ class Window(QMainWindow):
             self.movie_screen.resize(size)
             self.movie_screen.movie().setScaledSize(size)
 
-    def mouseButtonKind(self, buttons):
-        if buttons & Qt.LeftButton: self.is_clicked_L = True
-        if buttons & Qt.RightButton: self.is_clicked_L = False
-        if buttons & Qt.MidButton:  sys.exit(app.exec_())
-
     def dragEnterEvent(self, event):
         # 드롭다운 받으면 dropEvent 호출하는 이벤트
-        if event.mimeData().hasText(): event.acceptProposedAction()
+        if event.mimeData().hasText():event.acceptProposedAction()
 
     def dropEvent(self, event):
         img_url = event.mimeData().text().lstrip("file:///")
@@ -133,10 +144,10 @@ class Window(QMainWindow):
 
         if img_url[-4:] == '.gif':
             self.is_gif = True
-            del (self.canvas.movie)
+            del(self.canvas.movie)
             self.movie_screen.show()
-            self.canvas.image = self.no_img  # 배경 그림 지우기
-            self.canvas.play_gif(img_url)  # gif movie 생성
+            self.canvas.image = self.no_img # 배경 그림 지우기
+            self.canvas.play_gif(img_url)# gif movie 생성
             self.movie_screen.setMovie(self.canvas.movie)
             size = self.geometry()
 
